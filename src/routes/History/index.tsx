@@ -21,6 +21,7 @@ const History = () => {
     <PageBox>
       <h1>Search history</h1>
       <h3>Click on a button below to search for that term:</h3>
+      {!history.length && <h2 style={{color:'red'}}>No history yet</h2>}
       {history.map((entry:string, index:number)=>{
         return(
           <HistoryBox>
