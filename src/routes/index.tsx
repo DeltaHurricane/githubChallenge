@@ -1,0 +1,23 @@
+import React, { FunctionComponent, lazy, Suspense } from 'react';
+
+import { Routes, Route } from 'react-router-dom';
+
+import Search from './Search';
+
+const History = lazy(() => import('./History'));
+
+const Router: FunctionComponent = () => (
+  <Routes>
+    <Route path="/" element={<Search />} />
+    <Route
+      path="history"
+      element={
+        <Suspense fallback={<div >loading</div>}>
+          <History />
+        </Suspense>
+      }
+    />
+  </Routes>
+);
+
+export default Router;
