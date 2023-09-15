@@ -1,14 +1,14 @@
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchUser, selectUser, selectStatus } from '../../store/slices/user.slice';
+import { fetchUser, selectStatus } from '../../store/slices/user.slice';
 import { ERequestStatus } from '../../common/request';
-import { Repos } from './Repos';
+import { Repos } from './components/Repos';
 import { ChangeEvent, SyntheticEvent, useState } from 'react';
 import { Loader, NiceButton } from '../../components';
-import { PageBox, SearchInput, Form, UserBox, UserAvatar, PersonalBox, ColumnsBox, UserBio } from './styled';
+import { PageBox, SearchInput, Form, UserBox } from './styled';
+import User from './components/User';
 
 const Search = () => {
   const [search, setSearch] = useState('')
-  const user = useAppSelector(selectUser);
   const userStatus = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
 
@@ -34,32 +34,11 @@ const Search = () => {
         </NiceButton>
       </Form>
       
-      {userStatus === ERequestStatus.FAILED && <p>There was an error looking for the user, please check the username</p>}
+      {userStatus === ERequestStatus.FAILED && <p>There was an error looking for the user, please try again</p>}
       {userStatus === ERequestStatus.LOADING && <Loader type='bars' color='black'/>}
-      {userStatus === ERequestStatus.SUCCEEDED && !!user &&
+      {userStatus === ERequestStatus.SUCCEEDED &&
       <UserBox>
-        <PersonalBox>
-          <UserAvatar src={user.avatar_url}></UserAvatar>
-          <ColumnsBox>
-            {!!user.name?.length &&
-            <h4>
-            • {user.name}
-            </h4>
-            }
-            <h4>
-            • {user.login}
-            </h4>
-            {!!user.email?.length &&
-            <h4>
-            • {user.email}
-            </h4>
-            }
-            <a href={user.html_url} target="_blank">• Github</a>
-          </ColumnsBox>
-        </PersonalBox>
-        <UserBio>
-          {user.bio}
-        </UserBio>
+        <User/>
         <Repos />
       </UserBox>
       }

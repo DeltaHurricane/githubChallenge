@@ -19,13 +19,13 @@ const History = () => {
   console.log(history)
   return (
     <PageBox>
-      <h1>Search history</h1>
-      <h3>Click on a button below to search for that term:</h3>
+      <h1>Search history:</h1>
+      <h3>• Click on a button below to search for that term:</h3>
       {!history.length && <h2 style={{color:'red'}}>No history yet</h2>}
       {history.map((entry:string, index:number)=>{
         return(
           <HistoryBox>
-            <h2>{`#${index}`}</h2>
+            <h2>{`#${index+1}`}</h2>
             <NiceButton onClick={() => navigateToProfile(entry)}>
               {entry}
             </NiceButton>

@@ -15,10 +15,12 @@ export const NiceButton = styled.button`
   transition : 500ms;
   justify-content: center;
   cursor: pointer;
-  &:hover {
-    background-color: #fff;
-    color: #0066cc;
-    border: solid 2px #0066cc;
+  @media screen and (min-width: 900px) {
+    &:hover {
+      background-color: #fff;
+      color: #0066cc;
+      border: solid 2px #0066cc;
+    }
   }
   &:active {
     position:relative;

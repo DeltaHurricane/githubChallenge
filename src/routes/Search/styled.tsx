@@ -40,10 +40,12 @@ export const UserBox = styled.div`
       min-width: 100%;
       max-width: 100%;
       box-shadow: none;
+      padding: 0rem;
   }
 `
 
 export const PersonalBox = styled.div`
+  background: lightsteelblue;
   width: 100%;
   gap:1rem;
   padding: 2rem;
@@ -85,10 +87,52 @@ export const UserBio = styled.p`
  font-weight: bold;
 `
 
-export const ReposBox = styled.div`
+export const ReposBox = styled.ul`
   width: 100%;
-  gap:2rem;
-  padding: 1rem;
   display:flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  @media screen and (max-width: 900px) {
+      align-items: left;
+      flex-wrap: nowrap;
+      flex-direction: column;
+  }
+  
+`
+
+export const Repo = styled.li`
+  width: 100%;
+  gap:0.5rem;
+  padding: 0.5rem;
+  display:flex;
+  flex-direction: column;
   flex-wrap: wrap;
+  border-bottom: solid black 1px;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  @media screen and (max-width: 900px) {
+  }
+  &:nth-child(odd) {
+  background: lightsteelblue;
+  }
+  &:last-child {
+    border: none;
+  }
+`
+export const RepoLink = styled.a`
+  font-weight: normal;
+`
+export const RepoProp = styled.p`
+  width: 100%;
+  font-weight: bold;
+  overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+   overflow-wrap: break-word;
+`
+export const RepoDescript = styled.span`
+  font-weight: normal;
 `

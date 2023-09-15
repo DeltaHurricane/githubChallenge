@@ -18,7 +18,8 @@ export const historySlice = createSlice({
   extraReducers: {
     [fetchUser.fulfilled.type]: (_state, action: PayloadAction<{user:GitUser,repo:GitRepo, search:string}>) => {
       const state = _state;
-      state.history = [action.payload.search, ...state.history];
+      const noDuplicateHistory = state.history.filter(e => e !== action.payload.search);
+      state.history = [action.payload.search, ...noDuplicateHistory];
     }
   },
 },

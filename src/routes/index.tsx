@@ -1,7 +1,6 @@
 import React, { FunctionComponent, lazy, Suspense } from 'react';
-
 import { Routes, Route } from 'react-router-dom';
-
+import { Loader } from '../components';
 import Search from './Search';
 
 const History = lazy(() => import('./History'));
@@ -12,7 +11,7 @@ const Router: FunctionComponent = () => (
     <Route
       path="history"
       element={
-        <Suspense fallback={<div >loading</div>}>
+        <Suspense fallback={<Loader type='bars' color='black'/>}>
           <History />
         </Suspense>
       }

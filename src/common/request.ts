@@ -7,7 +7,12 @@ const defaultHeaders: HeadersInit = {
 
 const fetchRequest = <TResponse>(url: string, config: RequestInit = {}): Promise<TResponse> =>
   fetch(url, config)
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Something went wrong');
+    })
     .then((data) => data as TResponse);
 
 const request = {

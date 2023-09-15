@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 
 const HeaderBar = styled.ul`
-  background-color: #2f43c740;
+  background-color: #ffffff;
   height: 3rem;
   display: flex;
   align-items: center;
@@ -12,7 +12,6 @@ const HeaderBar = styled.ul`
   border-bottom: 1px black solid;
 `
 const HeaderItem = styled.li`
-  color: #858a33;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
 `
